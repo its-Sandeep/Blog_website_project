@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %} Create your blog here...{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+		<h1>Add Blog Posts .... </h1>
+
+		<div class="form-group">
+		   <form method="POST" enctype="multipart/form-data">
+				{% csrf_token %}
+				{{ form.media }}
+				{{ form.as_p }}
+				<button class="btn btn-secondary">Post</button>
+		</div>
+
+		<script>
+			
+            var name = "{{ user.username }}";
+            document.getElementById("elder").value = name;
+
+		</script>
+
+{% else %}
+
+<h1>What are you doing here without login .......... !!</h1>>
+
+{% endif %}
+
+{% endblock %}
